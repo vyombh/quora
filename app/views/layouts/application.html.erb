@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quora</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if notice %>
+
+
+<script type="text/javascript">
+	noty({text: '<%= notice %>', type: 'success', timeout: 1000});
+
+</script>
+<% end%>
+
+<% if  alert %>
+
+<script type="text/javascript">
+	noty({text: '<%=alert %>', type: 'error', timeout: 1000});
+
+</script>
+
+
+
+<% end%>
+
+
+
+
+
+
+
+
+
+<header>
+
+<div class="logo">
+<%= image_tag 'Quora_logo.png' %>
+</div>
+<%if current_user%>
+<nav>
+<ul>
+<li><%=current_user.email%></li>
+<li>  <%= link_to "Sign Out",destroy_user_session_path,method: :delete %></li>
+</ul>
+</nav>
+<%end%>
+</header>
+<%= yield %>
+
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+<div class="questionShow">
+			<div>
+			<h1><b><%=question.content%></b></h1>
+			</div>
+			by <%=question.user.firstName%> <%=question.user.lastName%> <%=question.created_at.strftime("%b %d,%y")%>
+	<div id="createAnswer">
+	 <%= form_for @answer, remote: true do |f|%>
+		<%= f.label :Answer %> <br>
+		<%= f.text_area :content %>  <br>
+		<%= f.hidden_field :question_id, :value => question.id %>
+		<%=f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.submit value:"Answer" ,id:  'create-answer-submit'%>
+		<%end%>
+	</div>
+	
+	<%=render 'answer',question: question%>
+</div>
