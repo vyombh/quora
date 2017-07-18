@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716182335) do
+ActiveRecord::Schema.define(version: 20170718093905) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -24,6 +24,26 @@ ActiveRecord::Schema.define(version: 20170716182335) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
 
+  create_table "downvoteas", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "downvoteas", ["answer_id"], name: "index_downvoteas_on_answer_id"
+  add_index "downvoteas", ["user_id"], name: "index_downvoteas_on_user_id"
+
+  create_table "downvoteqs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "downvoteqs", ["question_id"], name: "index_downvoteqs_on_question_id"
+  add_index "downvoteqs", ["user_id"], name: "index_downvoteqs_on_user_id"
+
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -32,6 +52,26 @@ ActiveRecord::Schema.define(version: 20170716182335) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "upvoteas", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "upvoteas", ["answer_id"], name: "index_upvoteas_on_answer_id"
+  add_index "upvoteas", ["user_id"], name: "index_upvoteas_on_user_id"
+
+  create_table "upvoteqs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "upvoteqs", ["question_id"], name: "index_upvoteqs_on_question_id"
+  add_index "upvoteqs", ["user_id"], name: "index_upvoteqs_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -4,8 +4,13 @@
 			<div>
 			<h1><b><%=question.content%></b></h1>
 			</div>
-			by <%=question.user.firstName%> <%=question.user.lastName%> <%=question.created_at.strftime("%b %d,%y")%>
-	
+			by <%=question.user.firstName%> <%=question.user.lastName%> <br>
+			asked <%=question.created_at.strftime("%b %d,%y")%><br>
+			<%= link_to 'Upvote', url_for(controller: 'upvoteqs', action: 'upvoteToggle', question: question.id), method: :post,id: "upvote_#{question.id}", remote: true, class: "" %> , <span id="upcount_question_<%=question.id%>"><%= question.upvoteqs.count %></span>
+
+			<%= link_to 'Downvote', url_for(controller: 'downvoteqs', action: 'downvoteToggle', question: question.id), method: :post,id: "downvote_#{question.id}",remote: true, class: "" %> , <span id="downcount_question_<%=question.id%>"><%= question.downvoteqs.count %></span>
+
+
 			<div id="createAnswer">
 			<%@answer=Answer.new%>
 				 <%= form_for @answer, remote: true do |f|%>

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :questions,only:[:create,:destroy]
   get 'home/index'
   root 'home#index'
+  post '/upvoteToggle' => 'upvoteqs#upvoteToggle'
+  post '/downvoteToggle' => 'downvoteqs#downvoteToggle'
+  post '/upvoteToggleAnswer' => 'upvoteas#upvoteToggleAnswer'
+  post '/downvoteToggleAnswer' => 'downvoteas#downvoteToggleAnswer'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

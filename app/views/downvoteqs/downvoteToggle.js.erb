@@ -1,0 +1,8 @@
+console.log("downvote_<%=@question.id%>")
+$("#upcount_question_<%=@question.id%>").text("<%= @question.upvoteqs.count %>")
+$("#downcount_question_<%=@question.id%>").text("<%= @question.downvoteqs.count %>")
+<%if @downvoteq%>
+noty({text: "question's downvote removed successfully!!", type: 'alert', timeout: 1000});
+<%else%>
+noty({text: 'question downvoted successfully!!', type: 'success', timeout: 1000});
+<%end%>

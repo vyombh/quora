@@ -4,5 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  has_many :questions
- has_many :upvotes
+ has_many :upvoteqs
+ has_many :downvoteqs
+  has_many :upvoteas
+  has_many :downvoteas
  end

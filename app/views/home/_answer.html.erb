@@ -1,4 +1,11 @@
 	<div class="answerShow">
 		<%=answer.user.firstName%> <%=answer.user.lastName%><br>
-		<%=answer.content%>
+		answered <%=answer.created_at.strftime("%b %d,%y")%><br>
+		<%=answer.content%> 
+		<br>
+		<%= link_to 'Upvote', url_for(controller: 'upvoteas', action: 'upvoteToggleAnswer', answer: answer.id), method: :post,id: "upvote_#{answer.id}", remote: true, class: "" %> , <span id="upcount_answer_<%=answer.id%>"><%= answer.upvoteas.count %></span>
+
+		<%= link_to 'Downvote', url_for(controller: 'downvoteas', action: 'downvoteToggleAnswer', answer: answer.id), method: :post,id: "downvote_#{answer.id}",remote: true, class: "" %> , <span id="downcount_answer_<%=answer.id%>"><%= answer.downvoteas.count %></span>
+
+
 	</div>
