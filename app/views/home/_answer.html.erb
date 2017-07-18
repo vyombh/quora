@@ -1,9 +1,4 @@
-<% answer = Answer.where(question_id: question.id).order(created_at: :desc)%>
-<%  answer.each do |answer| %><br>
 	<div class="answerShow">
-		<%if answer.question_id == question.id%>
 		<%=answer.user.firstName%> <%=answer.user.lastName%><br>
 		<%=answer.content%>
-		<%end%>
 	</div>
-<%end%>

@@ -1,6 +1,0 @@
-<% @question_feed.each do |question| %>
-$('#createQuestion').append("<%= escape_javascript (render 'home/question', question: question) %>");
-<% @answer.each do |answer|%>
-$('#createAnswer').append("<%= escape_javascript (render 'home/answer', question: question) %>");
-<%end%>
-<% end %>

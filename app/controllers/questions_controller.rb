@@ -19,7 +19,8 @@ class QuestionsController < ApplicationController
       if @question.save
         format.html { redirect_to '/', notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
-      else
+        format.js { }
+    else
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end

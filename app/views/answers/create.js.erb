@@ -1,0 +1,4 @@
+
+$('#allAnswers_<%=@answer.question.id%>').prepend("<%= escape_javascript (render 'home/answer', question: @answer.question.id, answer: @answer ) %>");
+$('#answer_content_<%=@answer.question.id%>').val("");
+	noty({text: 'question successfully answered!!', type: 'success', timeout: 1000});

@@ -16,10 +16,12 @@
 				</script>
      		<% end %>
  	<% end %>
+ 	<div id="allQuestions">
 	<%  @question_feed.each do |question| %><br>
-		<%=render('question',question: question)%>
+			<%=render('question',question: question)%>
+		
  	<%end%>
-
+ 	</div>
 
 </section>
 </main>
