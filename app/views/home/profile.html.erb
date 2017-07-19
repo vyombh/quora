@@ -1,0 +1,15 @@
+<main>
+<% if current_user.profile_picture %>
+<img src="/uploads/<%= current_user.profile_picture %>" class="profile_image" >
+<%else%>
+<img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" >
+<% end %>
+
+<%= form_tag url_for(controller: :home, action: :profile_picture), multipart: true do %>
+
+<%= file_field_tag :image %>
+<br>
+<%= submit_tag %>
+
+<% end %>
+</main>

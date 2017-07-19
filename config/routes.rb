@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :questions,only:[:create,:destroy]
   get 'home/index'
   root 'home#index'
+  get '/profile' =>'home#profile'
+  post'/upload'=> 'home#profile_picture'
   post '/upvoteToggle' => 'upvoteqs#upvoteToggle'
   post '/downvoteToggle' => 'downvoteqs#downvoteToggle'
   post '/upvoteToggleAnswer' => 'upvoteas#upvoteToggleAnswer'
