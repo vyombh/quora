@@ -7,10 +7,12 @@ class UpvoteasController < ApplicationController
 		@downvotea = Downvotea.where(answer_id:ans,user_id:current_user.id).first
 		downvotea = @downvotea
 		if upvotea
+			@relation = true;
 			upvotea.destroy
 		else
-			if upvotea
-				upvotea.destroy
+			@relation = false;
+			if downvotea
+				downvotea.destroy
 			end
 			upvotea = Upvotea.new
 			upvotea.answer_id = ans

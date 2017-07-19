@@ -1,3 +1,4 @@
 console.log("here")
 $('#allQuestions').prepend("<%= escape_javascript (render 'home/question', question: @question)%>");
+$('#question_content').val("");
 noty({text: 'question successfully asked!!', type: 'success', timeout: 1000});
