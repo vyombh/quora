@@ -3,14 +3,34 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	has_many :questions
-	has_many :answers
-	has_many :upvoteqs
-	has_many :comments
-	has_many :downvoteqs
-	has_many :upvoteas
-	has_many :downvoteas
-	has_many :comments
-  	has_many :replies
+	has_many :questions, dependent: :destroy
+	has_many :answers,   dependent: :destroy
+	has_many :replies,   dependent: :destroy
+	has_many :upvoteqs,  dependent: :destroy
+	has_many :upvoteas,  dependent: :destroy
+	has_many :upvotecs,  dependent: :destroy
+	has_many :upvoters,  dependent: :destroy
+	has_many :comments,  dependent: :destroy
+	has_many :downvoteqs,dependent: :destroy
+	has_many :downvoteas,dependent: :destroy
+	has_many :downvotecs,dependent: :destroy
+	has_many :downvoters,dependent: :destroy
+	has_many :comments,  dependent: :destroy
+  	has_many :replies,   dependent: :destroy
+	def followings
+		User.find(FollowMapping.where(follower_id: id).pluck(:followee_id))
+	end
+	def followers
+		User.find(FollowMapping.where(followee_id: id).pluck(:follower_id))
+	end
+	def followed followee_id,follower_id
+		
+		f = FollowMapping.where(follower_id: follower_id,followee_id: followee_id).first
+		if f
+			return "unfollow"
+		else
+			return "follow"
+		end
+	end
 
 end

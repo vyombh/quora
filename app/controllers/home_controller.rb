@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
  before_action :authenticate_user!
   def index
+     
   	respond_to do |format|
   		format.html{
   			@question=Question.new
@@ -26,5 +27,21 @@ class HomeController < ApplicationController
     current_user.save
     return redirect_to '/profile'
   end
+
+def follow
+  followee_id = params[:followee_id]
+  follower_id = current_user.id
+  
+  f = FollowMapping.where(follower_id: follower_id,followee_id: followee_id).first
+  if f
+    f.destroy
+  elsif followee_id.to_i != follower_id.to_i
+    f = FollowMapping.new
+    f.follower_id = follower_id
+    f.followee_id = followee_id
+    f.save
+  end
+  return redirect_to '/users'
+end
 
 end

@@ -1,8 +1,8 @@
 class Reply < ActiveRecord::Base
   belongs_to :user
   belongs_to :comment
-  has_many :upvoters
-  has_many :downvoters
+  has_many :upvoters, dependent: :destroy
+  has_many :downvoters, dependent: :destroy
 def upvote_reply user_id
     Upvoter.where(reply_id: id, user_id: user_id).length > 0
   end

@@ -1,0 +1,8 @@
+
+<%users=User.all%>
+<% users.each do |user|%>
+	<%=user.firstName%> <%=user.lastName%>
+	<%=link_to user.followed(user.id,current_user.id), url_for(controller: 'home', action: 'follow',followee_id: user.id),method: :post,id: "follow_#{user.id}"%>
+	 followers: <%=user.followers.length%> followings: <%=user.followings.length%>
+<br>
+<%end%>

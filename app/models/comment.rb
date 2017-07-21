@@ -1,10 +1,11 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :answer
-  has_many :comments
-  has_many :upvotecs
-  has_many :replies
-  has_many :downvotecs
+  has_many :upvotecs, dependent: :destroy
+  has_many :replies, dependent: :destroy
+  has_many :downvotecs, dependent: :destroy
+  validates :content, presence: true
+  validates :user, presence: true
 def upvote_comment user_id
     Upvotec.where(comment_id: id, user_id: user_id).length > 0
   end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   get '/profile' =>'home#profile'
+  get '/users' =>'home#users'
   post'/upload'=> 'home#profile_picture'
   post '/upvoteToggle' => 'upvoteqs#upvoteToggle'
   post '/downvoteToggle' => 'downvoteqs#downvoteToggle'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   post '/downvoteToggleComment' => 'downvotecs#downvoteToggleComment'
   post '/upvoteToggleReply' => 'upvoters#upvoteToggleReply'
   post '/downvoteToggleReply' => 'downvoters#downvoteToggleReply'
+  post '/follow' => 'home#follow'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
