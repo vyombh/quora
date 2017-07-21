@@ -12,7 +12,7 @@
 		on <%=answer.created_at.strftime("%b %d,%y")%><br>
 		</div>
 		</div>
-		<%=answer.content%> 
+		<span id="content"><%=answer.content%> </span>
 		<br><br>
 		<%= link_to 'Upvote', url_for(controller: 'upvoteas', action: 'upvoteToggleAnswer', answer: answer.id), method: :post,id: "upvote_answer_#{answer.id}", remote: true, class: answer.classStringAnswer(current_user.id)%>   <span id="upcount_answer_<%=answer.id%>"><%= answer.upvoteas.count %></span>
 
@@ -36,7 +36,5 @@
 				 <%end%>
 			</div>
 
-			
-
-
 	</div>
+	

@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
 	has_many :upvoteas
 	has_many :downvoteas
 	has_many :comments
+  	has_many :replies
+
 end

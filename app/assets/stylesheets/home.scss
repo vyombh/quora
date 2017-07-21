@@ -2,6 +2,7 @@
 	padding:0;
 	margin:0;
 }
+
 body{
 	background-color:#fafafa;
 }
@@ -24,23 +25,33 @@ header {
 
             }
         }
-        a:hover{
+        a:hover.logo{
             background-color:white;
             border:2px solid #e2e2e2;
             padding:4px;
             border-radius:10%;
-        }
+        }  
     }
 
     div{
         display:flex;
         align-items: center;
         justify-content:space-between;
+        a{
         img.profile_image{
             height:48px;
             width:48px;
             border-radius:50%;
             margin-right:25px;
+        }
+        }
+        a:hover.pro{
+            height:48px;
+            width:48px;
+            margin-right:25px;
+            background-color:white;
+            border:none;
+            padding:0px;
         }
 
         nav {
@@ -309,7 +320,56 @@ background-color:white;
                     }
 
 
+                       div#createReply{
+                             textarea{
+                                width: 98%;
+                                height: 81px;
+                                padding-left: 4px;
+                                padding-top: 4px;
+                                margin-bottom: 5px;
+                            }
+                            input#create-reply-submit{
+                                padding: 4px 7px;
+                                margin: 5px 0px;
+                                background-color:#f1f8fb;
+                                border-radius:4px;
+                                font-size:15px;
+                                padding:4px 7px;
+                                border: 1px solid #234462;
+                                color:#2865a1;
+                            }
 
+                      
+                      }
+
+                    div.allReplies{
+                         div.replyShow{
+                           a.reply{
+                                margin-top:10px;
+                            }
+                            padding: 5px;
+                            padding-bottom:0px;
+                            height:auto;
+                            border-top: 1px solid #e2e2e2;
+                                div.user{
+                                    display:flex;
+                                    align-items:center;
+                                div.left{
+                                    img.profile_image{
+                                        height:50px;
+                                        width:50px;
+                                        border-radius:50%;
+                                        margin-right:25px;
+                                        margin-left:12px;
+                                    }
+                                }
+                            div.right{
+
+                            }
+                        }
+
+                       }
+                    }
 
 
 

@@ -25,9 +25,13 @@
 	pincode:
 	<br>
 	</div>
+	<%=asset_path 'background.png'%>
 </div>
 <% a = current_user.answers.order(created_at: :desc)%>
 <%if a.length == 0%>
+<div class="allAnswers">
+<h3>U haven't answered any question yet!!</h3>
+</div>
 <%else%>
 <div class="allAnswers">
 	<h3><span><%=a.length%> question answered by you </span></h3>

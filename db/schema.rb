@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720172459) do
+ActiveRecord::Schema.define(version: 20170721152132) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20170720172459) do
   add_index "downvoteqs", ["question_id"], name: "index_downvoteqs_on_question_id"
   add_index "downvoteqs", ["user_id"], name: "index_downvoteqs_on_user_id"
 
+  create_table "downvoters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reply_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "downvoters", ["reply_id"], name: "index_downvoters_on_reply_id"
+  add_index "downvoters", ["user_id"], name: "index_downvoters_on_user_id"
+
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -73,6 +83,17 @@ ActiveRecord::Schema.define(version: 20170720172459) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "replies", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "replies", ["comment_id"], name: "index_replies_on_comment_id"
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id"
 
   create_table "upvoteas", force: :cascade do |t|
     t.integer  "user_id"
@@ -103,6 +124,16 @@ ActiveRecord::Schema.define(version: 20170720172459) do
 
   add_index "upvoteqs", ["question_id"], name: "index_upvoteqs_on_question_id"
   add_index "upvoteqs", ["user_id"], name: "index_upvoteqs_on_user_id"
+
+  create_table "upvoters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reply_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "upvoters", ["reply_id"], name: "index_upvoters_on_reply_id"
+  add_index "upvoters", ["user_id"], name: "index_upvoters_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

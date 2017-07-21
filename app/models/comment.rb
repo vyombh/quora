@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :answer
   has_many :comments
   has_many :upvotecs
+  has_many :replies
   has_many :downvotecs
 def upvote_comment user_id
     Upvotec.where(comment_id: id, user_id: user_id).length > 0

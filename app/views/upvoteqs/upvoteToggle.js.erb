@@ -1,4 +1,4 @@
-console.log("upvote_<%=@question.id%>")
+console.log("<%=@upvoteq%>")
 $("#upcount_question_<%=@question.id%>").text("<%= @question.upvoteqs.count %>")
 $("#downcount_question_<%=@question.id%>").text("<%= @question.downvoteqs.count %>")
 

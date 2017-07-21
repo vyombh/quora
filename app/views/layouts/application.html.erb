@@ -29,14 +29,14 @@
 <header>
 
 <div class="logo">
-<a href='/'><%= image_tag 'Quora_logo.png'%></a>
+<a href='/' class="logo"><%= image_tag 'Quora_logo.png'%></a>
 </div>
 <%if current_user%>
 <div>
 <% if current_user.profile_picture %>
-<img src="/uploads/<%= current_user.profile_picture %>" class="profile_image" >
+<a href="/profile" class="pro"><img src="/uploads/<%=current_user.profile_picture %>" class="profile_image"></a>
 <%else%>
-<img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" >
+<a href='/profile' class="pro"><img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" ></a>
 <% end %>
 <nav>
 <ul>
