@@ -1,0 +1,20 @@
+	<div class="commentShow">
+		<div class="user">
+		<div class="left">
+			<% if comment.user.profile_picture %>
+				<img src="/uploads/<%= comment.user.profile_picture %>" class="profile_image" >
+			<%else%>
+				<img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" >
+			<% end %>
+		</div>
+		<div class = "right">
+		commented by <%=comment.user.firstName%> <%=comment.user.lastName%>
+		on <%=comment.created_at.strftime("%b %d,%y")%><br>
+		</div>
+		</div>
+		<%=comment.content%> 
+		<br><br>
+		<%= link_to 'Upvote', url_for(controller: 'upvotecs', action: 'upvoteToggleComment', comment: comment.id), method: :post,id: "upvote_comment_#{comment.id}", remote: true, class: comment.classStringComment(current_user.id)%>   <span id="upcount_comment_<%=comment.id%>"><%= comment.upvotecs.count %></span>
+
+		<%= link_to 'Downvote', url_for(controller: 'downvotecs', action: 'downvoteToggleComment', comment: comment.id), method: :post,id: "downvote_comment_#{comment.id}",remote: true, class: comment.classStringCommentDownvote(current_user.id) %>   <span id="downcount_comment_<%=comment.id%>"><%= comment.downvotecs.count %></span>
+</div>

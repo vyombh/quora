@@ -17,10 +17,18 @@ header {
     background-color: white;
     border-bottom: 1px solid grey;
     div.logo {
-        img {
-        	height: 25px;	
-        	weight: 40px;
+        a{
+            img {
+        	   height: 25px;	
+        	   width: 80px;
 
+            }
+        }
+        a:hover{
+            background-color:white;
+            border:2px solid #e2e2e2;
+            padding:4px;
+            border-radius:10%;
         }
     }
 
@@ -29,10 +37,10 @@ header {
         align-items: center;
         justify-content:space-between;
         img.profile_image{
-            height:50px;
-            width:50px;
+            height:48px;
+            width:48px;
             border-radius:50%;
-            margin-right:50px;
+            margin-right:25px;
         }
 
         nav {
@@ -48,8 +56,62 @@ header {
         }
     }
 }
+main.profile{
+    display:flex;
+    padding: 10px 20px;
+    flex-direction:column;
+    background-color:white;
+    height:auto;
+    div.flex{
+    display:flex;
+        div.left{
+             img.profile_image{
+                width:150px;
+                height:150px;
+                border: 1px solid black;
+                border-radius:50%;
+            }
+            input#image{
+                margin:10px 0px;
+            }
+        }
+        div.right{
+
+        }
+    }
+    div.allAnswers{
+                    padding-left:20%;
+                     div.answerShow{
+                        width:60%;
+                        height:auto;
+                        margin-top: 5px;
+                        padding: 5px;
+                        border: 1px solid black;
+                        div.user{
+                        display:flex;
+                        align-items:center;
+                            div.leftpic{
+                                img.profile_image{
+                                    height:50px;
+                                    width:50px;
+                                    border-radius:50%;
+                                    margin-right:25px;
+                                    margin-left:12px;
+                                }
+                            }
+                            div.right{
+
+                            }
+                        }
+                    }
+     }
+
+
+}
 main{
 display:flex;
+height:95vh;
+height:auto;
 flex-direction: row;
 background-color:white;
     img.profile_image{
@@ -95,10 +157,10 @@ background-color:white;
                 justify-content: space-around;
                 border: none;
             div.questionShow{
-            background-color:white;
+                background-color:white;
                 padding: 5px;
                 margin-bottom:20px;
-                border: 1px solid #e2e2e2;
+                border: 1px solid black;
             div{
                         text-align: justify;
                         height:auto;
@@ -122,7 +184,6 @@ background-color:white;
                     margin-left:5px;
                  }
                  a.downvoted{
-
                     color: white;
                     padding: 4px 7px;
                     margin-top: 5px;
@@ -178,7 +239,7 @@ background-color:white;
                      div.answerShow{
                         margin-top: 5px;
                         padding: 5px;
-                        border: 1px solid black;
+                        border: 1px solid #e2e2e2;
                         div.user{
                         display:flex;
                         align-items:center;
@@ -187,13 +248,80 @@ background-color:white;
                                     height:50px;
                                     width:50px;
                                     border-radius:50%;
-                                    margin:0px 25px;
+                                    margin-right:25px;
+                                    margin-left:12px;
                                 }
                             }
                             div.right{
 
                             }
                         }
+
+                        div#createComment{
+                             textarea{
+                                width: 98%;
+                                height: 81px;
+                                padding-left: 4px;
+                                padding-top: 4px;
+                                margin-bottom: 5px;
+                            }
+                            input#create-comment-submit{
+                                padding: 4px 7px;
+                                margin: 5px 0px;
+                                background-color:#f1f8fb;
+                                border-radius:4px;
+                                font-size:15px;
+                                padding:4px 7px;
+                                border: 1px solid #234462;
+                                color:#2865a1;
+                            }
+
+                      
+                      }
+
+                    div.allComments{
+                         div.commentShow{
+                           a.comment{
+                                margin-top:10px;
+                            }
+                            padding: 5px;
+                            padding-bottom:0px;
+                            height:auto;
+                            border-top: 1px solid #e2e2e2;
+                                div.user{
+                                    display:flex;
+                                    align-items:center;
+                                div.left{
+                                    img.profile_image{
+                                        height:50px;
+                                        width:50px;
+                                        border-radius:50%;
+                                        margin-right:25px;
+                                        margin-left:12px;
+                                    }
+                                }
+                            div.right{
+
+                            }
+                        }
+                         
+                       }
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     }
                    }
             }

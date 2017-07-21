@@ -1,0 +1,4 @@
+console.log("here")
+$('#allComments_<%=@comment.answer.id%>').prepend("<%= escape_javascript (render 'home/comment', comment: @comment)%>");
+$('#comment_content_<%=@comment.answer.id%>').val("");
+noty({text: 'answer has been successfully commented!!', type: 'success', timeout: 1000});

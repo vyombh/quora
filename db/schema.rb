@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719173820) do
+ActiveRecord::Schema.define(version: 20170720172459) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20170719173820) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "content"
+  end
+
+  add_index "comments", ["answer_id"], name: "index_comments_on_answer_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
   create_table "downvoteas", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "answer_id"
@@ -33,6 +44,16 @@ ActiveRecord::Schema.define(version: 20170719173820) do
 
   add_index "downvoteas", ["answer_id"], name: "index_downvoteas_on_answer_id"
   add_index "downvoteas", ["user_id"], name: "index_downvoteas_on_user_id"
+
+  create_table "downvotecs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "downvotecs", ["comment_id"], name: "index_downvotecs_on_comment_id"
+  add_index "downvotecs", ["user_id"], name: "index_downvotecs_on_user_id"
 
   create_table "downvoteqs", force: :cascade do |t|
     t.integer  "user_id"
@@ -62,6 +83,16 @@ ActiveRecord::Schema.define(version: 20170719173820) do
 
   add_index "upvoteas", ["answer_id"], name: "index_upvoteas_on_answer_id"
   add_index "upvoteas", ["user_id"], name: "index_upvoteas_on_user_id"
+
+  create_table "upvotecs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "upvotecs", ["comment_id"], name: "index_upvotecs_on_comment_id"
+  add_index "upvotecs", ["user_id"], name: "index_upvotecs_on_user_id"
 
   create_table "upvoteqs", force: :cascade do |t|
     t.integer  "user_id"

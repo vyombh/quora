@@ -1,15 +1,55 @@
-<main>
-<% if current_user.profile_picture %>
-<img src="/uploads/<%= current_user.profile_picture %>" class="profile_image" >
+<main class="profile">
+<div class="flex">
+	<div class="left">
+		<% if current_user.profile_picture %>
+			<img src="/uploads/<%= current_user.profile_picture %>" class="profile_image" >
+		<%else%>
+			<img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" >
+		<% end %>
+
+		<%= form_tag url_for(controller: :home, action: :profile_picture), multipart: true do %>
+
+		<%= file_field_tag :image %>
+		<br>
+		<%= submit_tag %>
+
+		<% end %>
+	</div>
+	<div class="right">
+	Name: <%= current_user.firstName%> <%= current_user.lastName%> 
+	<br>
+	Occupation:
+	<br>
+	location:
+	<br>
+	pincode:
+	<br>
+	</div>
+</div>
+<% a = current_user.answers.order(created_at: :desc)%>
+<%if a.length == 0%>
 <%else%>
-<img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" >
-<% end %>
-
-<%= form_tag url_for(controller: :home, action: :profile_picture), multipart: true do %>
-
-<%= file_field_tag :image %>
-<br>
-<%= submit_tag %>
-
-<% end %>
+<div class="allAnswers">
+	<h3><span><%=a.length%> question answered by you </span></h3>
+	<% a.each do |answer|%>
+	<div class="answerShow">
+		<div class="user">
+		<div class="leftpic">
+			<% if answer.user.profile_picture %>
+				<img src="/uploads/<%= answer.user.profile_picture %>" class="profile_image" >
+			<%else%>
+				<img src="/uploads/twitter-default-no-profile-pic.jpg" class="profile_image" >
+			<% end %>
+		</div>
+		<div class = "right">
+		answered by <%=answer.user.firstName%> <%=answer.user.lastName%>
+		on <%=answer.created_at.strftime("%b %d,%y")%><br>
+		</div>
+		</div>
+		<h2><%=answer.question.content%></h2><br>
+		<%= answer.content%><br>
+	</div>
+	<%end%>
+</div>
+	<%end%>
 </main>

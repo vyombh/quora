@@ -3,6 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   has_many :upvoteas
   has_many :downvoteas
+  has_many :comments
   validates :content, presence: true
   def upvote_answer user_id
     Upvotea.where(answer_id: id, user_id: user_id).length > 0

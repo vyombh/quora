@@ -19,4 +19,24 @@
 		<%= link_to 'Downvote', url_for(controller: 'downvoteas', action: 'downvoteToggleAnswer', answer: answer.id), method: :post,id: "downvote_answer_#{answer.id}",remote: true, class: answer.classStringAnswerDownvote(current_user.id) %>   <span id="downcount_answer_<%=answer.id%>"><%= answer.downvoteas.count %></span>
 		<br><br>
 
+		<div id="createComment">
+			<%@comment=Comment.new%>
+				 <%= form_for @comment, remote: true do |f|%>
+					 <%= f.label :comment %> <br>
+					 <%= f.text_area :content,id:  "comment_content_#{answer.id}"%>  <br>
+				  	 <%= f.hidden_field :answer_id, :value => answer.id %>
+					 <%=f.hidden_field :user_id, :value => current_user.id %>
+					 <%= f.submit value:"Comment" ,id:  'create-comment-submit'%>
+			 	 <%end%>
+		</div>
+		<% comments = Comment.where(answer_id: answer.id).order(created_at: :desc)%>
+			<div id="allComments_<%=answer.id%>" class="allComments">
+				 <%  comments.each do |comment| %><br>
+					 <%=render 'comment',answer: answer,comment: comment%>
+				 <%end%>
+			</div>
+
+			
+
+
 	</div>
