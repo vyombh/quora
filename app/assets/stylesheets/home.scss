@@ -67,6 +67,61 @@ header {
         }
     }
 }
+
+main.users{
+    display:flex;
+    flex-direction:column;
+    padding-left: 20%;
+    padding-top: 5%;
+    div.user_template{
+        width:60%;
+        border:1px solid black;
+        border-bottom:none;
+        display:flex;
+        padding: 10px 15px;
+        flex-direction:row;
+        justify-content:space-between;
+        div.leftPart{
+             display:flex;
+            padding: 10px 15px;
+            flex-direction:row;
+            flex-grow:1;
+        
+        align-items:center;
+            span.left{
+                img{
+                    width:48px;
+                    height:48px;
+                    margin-right:25px;
+                    border-radius:50%;
+                }
+            }
+            span.right{
+               
+                a:hover{
+                background-color:white;
+                color:black;
+                }
+            }
+        }
+
+        div.rightPart{
+         display:flex;
+         width:40%;
+         align-items:center;
+        padding: 10px 15px;
+        flex-direction:row;
+        justify-content:space-around;
+            div.follow{
+                margin-left:25x;
+            }
+        }
+           
+    }
+    div.user_template:last-child{
+        border-bottom:1px solid black;
+    }
+}
 main.profile{
     display:flex;
     padding: 10px 20px;

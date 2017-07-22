@@ -12,7 +12,10 @@ class HomeController < ApplicationController
   		format.js{   }	
   	end
   end
+  def profile
+    @user = User.find params[:user]
 
+  end
   def profile_picture
     uploaded_file = params[:image]
     if uploaded_file==nil
@@ -30,7 +33,9 @@ class HomeController < ApplicationController
 
 def follow
   followee_id = params[:followee_id]
+  @followee = User.find(followee_id)
   follower_id = current_user.id
+  @follower = User.find(follower_id)
   
   f = FollowMapping.where(follower_id: follower_id,followee_id: followee_id).first
   if f
@@ -41,7 +46,12 @@ def follow
     f.followee_id = followee_id
     f.save
   end
-  return redirect_to '/users'
+ respond_to do |format|
+    format.html{
+       return redirect_to '/users'
+    }
+    format.js{ }
+  end
 end
 
 end

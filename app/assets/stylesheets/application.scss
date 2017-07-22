@@ -17,12 +17,13 @@
  main#login{
  	margin-top:4px;
  	margin-left:20%;
- 	padding: 5% 5%;
+ 	width: 625px;
+    height:550px;
+    padding: 0.5% 5%;
  	display: flex;
+    overflow-y: auto;
  	flex-direction: column;
  	background-color: white;
- 	width: 625px;
- 	height:480px;
  	align-items: center;
  	vertical-align: middle;
  	div.loginLogo{
