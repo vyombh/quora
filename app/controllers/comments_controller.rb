@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
         format.js{ }
       else
         format.html { render :new }
+        format.js{ }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -58,6 +59,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user_id, :answer_id, :content)
+      params.require(:comment).permit(:content, :user_id, :answer_id)
     end
 end

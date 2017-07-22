@@ -1,6 +1,7 @@
 class Reply < ActiveRecord::Base
   belongs_to :user
   belongs_to :comment
+  validates :content, presence: true
   has_many :upvoters, dependent: :destroy
   has_many :downvoters, dependent: :destroy
 def upvote_reply user_id

@@ -1,16 +1,15 @@
 <main>
-<aside>
-</aside>
+
 <section>
 	<div id="createQuestion">
 	<%= form_for @question ,remote: true do |f|%>
 	<%= f.label :Ask_question %> <br>
-	<%= f.text_area :content ,required: true%>  <br>
+	<%= f.text_area :content%>  <br>
 	<%= f.submit  value:"Ask question", id:  'create-question-submit'%>
 	<%end%>
 	</div>
 	<% if @question.errors.any? %>
-        	<% @question.errors.full_messages.each do |message| %>
+        		<% @question.errors.full_messages.each do |message| %>
    				<script type="text/javascript">
 				noty({text: '<%= message %>', type: 'error'});
 				</script>

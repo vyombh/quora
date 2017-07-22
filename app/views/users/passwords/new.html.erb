@@ -1,8 +1,9 @@
+
 <main id="login">
 <h2>Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <% devise_error_messages! %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -15,6 +16,7 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+
 </main>
 <style type="text/css">
   body{
