@@ -34,5 +34,5 @@ class User < ActiveRecord::Base
 			return "follow"
 		end
 	end
-
+	enum post: {reader: 0, member: 1, moderator: 2, admin: 3}     
 end

@@ -225,8 +225,51 @@ background-color:white;
                 margin-bottom:20px;
                 border: 1px solid black;
             div{
-                        text-align: justify;
-                        height:auto;
+            text-align: justify;
+            height:auto;
+                        div.buttonFlex{
+                        display:flex;
+                        flex-direction:row;
+                        justify-content:space-between;
+
+                               div.allbuttonthings{
+                                        position:relative;
+                               
+                                    button{
+                                        display:inline-block;
+                                    }
+
+                                    div.dropDown{
+                                        width: 72px;
+                                        border: 1px solid black;
+                                        padding:4px 0px 4px 0px;
+                                        display:none;
+                                        position:absolute;
+                                        background-color: lightGrey;
+                                        right:0px;
+                                        ol{
+                                            li{
+                                                 background-color: lightGrey;
+                                                text-decoration:none;
+                                                list-style:none;
+                                                text-align:right;
+                                                border-bottom:1px solid #9087CC;
+                                               
+                                            }
+                                            li:hover {
+                                                 background-color: white;
+                                            }
+                                            li:last-child{
+                                                border:none;
+                                            }
+                                        }
+                                    }
+                                    
+
+                               }
+                             
+
+                        }
             }
                 
                  a.upvoted{

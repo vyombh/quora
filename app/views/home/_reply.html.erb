@@ -9,14 +9,22 @@
 		</div>
 		<div class = "right">
 		replied by <%=reply.user.firstName%> <%=reply.user.lastName%>
-		on <%=reply.created_at.strftime("%b %d,%y")%><br>
+		on <%=reply.created_at.strftime("%b %d,%y")%>
+
+			<%if reply.user == current_user %> 
+		<button>...</button>	
+	 <%= link_to "delete",reply_path(id: reply.id),method: :delete,data: {confirm:"Are you sure?"}%>
+	<%end%>
+
+
+		<br>
 		</div>
 		</div>
 		<%=reply.content%> 
 		<br><br>
+<% if current_user != nil%>
 		<%= link_to 'Upvote', url_for(controller: 'upvoters', action: 'upvoteToggleReply', reply: reply.id), method: :post,id: "upvote_reply_#{reply.id}", remote: true, class: reply.classStringReply(current_user.id)%>   <span id="upcount_reply_<%=reply.id%>"><%= reply.upvoters.count %></span>
 
 		<%= link_to 'Downvote', url_for(controller: 'downvoters', action: 'downvoteToggleReply', reply: reply.id), method: :post,id: "downvote_reply_#{reply.id}",remote: true, class: reply.classStringReplyDownvote(current_user.id) %>   <span id="downcount_reply_<%=reply.id%>"><%= reply.downvoters.count %></span>
-
-		
+<%end%>	
 </div>

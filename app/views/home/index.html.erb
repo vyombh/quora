@@ -1,6 +1,6 @@
 <main>
-
 <section>
+<% if current_user != nil%>
 	<div id="createQuestion">
 	<%= form_for @question ,remote: true do |f|%>
 	<%= f.label :Ask_question %> <br>
@@ -15,6 +15,7 @@
 				</script>
      		<% end %>
  	<% end %>
+<%end%>
  	<div id="allQuestions">
 	<%  @question_feed.each do |question| %><br>
 			<%=render('question',question: question)%>
@@ -23,4 +24,7 @@
  	</div>
 
 </section>
+
 </main>
+
+

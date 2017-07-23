@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721174318) do
+ActiveRecord::Schema.define(version: 20170723181350) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -85,8 +85,9 @@ ActiveRecord::Schema.define(version: 20170721174318) do
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "anonymous",  default: false
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(version: 20170721174318) do
     t.string   "firstName"
     t.string   "lastName"
     t.string   "profile_picture"
+    t.integer  "post",                   default: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

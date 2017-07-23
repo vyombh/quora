@@ -9,15 +9,26 @@
 		</div>
 		<div class = "right">
 		commented by <%=comment.user.firstName%> <%=comment.user.lastName%>
-		on <%=comment.created_at.strftime("%b %d,%y")%><br>
+		on <%=comment.created_at.strftime("%b %d,%y")%>
+		<%if comment.user == current_user %> 
+				 <button>...</button>	
+				
+				 <%= link_to "delete",comment_path(id: comment.id),method: :delete,data: {confirm:"Are you sure?"}%>
+				<%end%>
+
+				<br>
+		<br>
 		</div>
 		</div>
 		<%=comment.content%> 
 		<br><br>
+<% if current_user != nil%>
 		<%= link_to 'Upvote', url_for(controller: 'upvotecs', action: 'upvoteToggleComment', comment: comment.id), method: :post,id: "upvote_comment_#{comment.id}", remote: true, class: comment.classStringComment(current_user.id)%>   <span id="upcount_comment_<%=comment.id%>"><%= comment.upvotecs.count %></span>
 
 		<%= link_to 'Downvote', url_for(controller: 'downvotecs', action: 'downvoteToggleComment', comment: comment.id), method: :post,id: "downvote_comment_#{comment.id}",remote: true, class: comment.classStringCommentDownvote(current_user.id) %>   <span id="downcount_comment_<%=comment.id%>"><%= comment.downvotecs.count %></span>
+<%end%>
 		<br><br>
+<% if current_user != nil%>
 		<div id="createReply">
 			<%@reply=Reply.new%>
 				 <%= form_for @reply, remote: true do |f|%>
@@ -28,6 +39,7 @@
 					 <%= f.submit value:"Reply" ,id:  'create-reply-submit'%>
 			 	 <%end%>
 		</div>
+<%end%>
 		<% replies = Reply.where(comment_id: comment.id).order(created_at: :desc)%>
 			<div id="allReplies_<%=comment.id%>" class="allReplies">
 				 <%  replies.each do |reply| %><br>

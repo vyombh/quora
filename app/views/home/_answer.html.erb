@@ -9,16 +9,27 @@
 		</div>
 		<div class = "right">
 		answered by <%=answer.user.firstName%> <%=answer.user.lastName%>
-		on <%=answer.created_at.strftime("%b %d,%y")%><br>
+		on <%=answer.created_at.strftime("%b %d,%y")%>
+		<%if answer.user == current_user %> 
+				 <button>...</button>	
+				
+				 <%= link_to "delete",answer_path(id: answer.id),method: :delete,data: {confirm:"Are you sure?"}%>
+				<%end%>
+
+
+		<br>
 		</div>
 		</div>
 		<span id="content"><%=answer.content%> </span>
 		<br><br>
+<% if current_user != nil%>
+
 		<%= link_to 'Upvote', url_for(controller: 'upvoteas', action: 'upvoteToggleAnswer', answer: answer.id), method: :post,id: "upvote_answer_#{answer.id}", remote: true, class: answer.classStringAnswer(current_user.id)%>   <span id="upcount_answer_<%=answer.id%>"><%= answer.upvoteas.count %></span>
 
 		<%= link_to 'Downvote', url_for(controller: 'downvoteas', action: 'downvoteToggleAnswer', answer: answer.id), method: :post,id: "downvote_answer_#{answer.id}",remote: true, class: answer.classStringAnswerDownvote(current_user.id) %>   <span id="downcount_answer_<%=answer.id%>"><%= answer.downvoteas.count %></span>
+		<%end%>
 		<br><br>
-
+<% if current_user != nil%>
 		<div id="createComment">
 			<%@comment=Comment.new%>
 				 <%= form_for @comment, remote: true do |f|%>
@@ -29,6 +40,7 @@
 					 <%= f.submit value:"Comment" ,id:  'create-comment-submit'%>
 			 	 <%end%>
 		</div>
+<%end%>
 		<% comments = Comment.where(answer_id: answer.id).order(created_at: :desc)%>
 			<div id="allComments_<%=answer.id%>" class="allComments">
 				 <%  comments.each do |comment| %><br>

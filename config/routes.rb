@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :replies,only:[:create,:destroy]
-  resources :comments,only:[:create,:destroy]
-  resources :answers,only:[:create,:destroy]
-  resources :questions,only:[:create,:destroy]
+  resources :replies,only:[:create,:edit,:destroy]
+  resources :comments,only:[:create,:edit,:destroy]
+  resources :answers,only:[:create,:edit,:destroy]
+  resources :questions,only:[:create,:edit,:destroy]
   get 'home/index'
   root 'home#index'
   get '/profile' =>'home#profile'
