@@ -44,7 +44,8 @@
 <% if !current_user%>
 <% if  devise_error_messages!.length != 0 %>
 <script type="text/javascript">
-  noty({text: '<%=devise_error_messages!.split('<li>')[1].split('</li>')[0]%>', type: 'error'});
+  <%byebug%>
+  noty({text: '<%=devise_error_messages!.split('<li>')[1].split('</li>')[0].html_safe%>', type: 'error'});
 </script>
 
 <% end%>
